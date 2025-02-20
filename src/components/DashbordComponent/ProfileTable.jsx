@@ -1,0 +1,77 @@
+"use client"
+import React, { useState } from "react";
+import { FiSearch } from "react-icons/fi";
+
+const ProfileTable = () => {
+  const [searchTerm, setSearchTerm] = useState("");
+  const profiles = [
+    { id: 1, name: "Verve-1", currency:"NGN", Exipiration: "12 months", Bin:"501166", date: "Nov. 4, 2022", email: "helen@sailboatui.com" },
+    { id: 2, name: "Verve-1", currency:"NGN", Exipiration: "12 months", Bin:"501166", date: "Nov. 4, 2022", email: "helen@sailboatui.com" },
+    { id: 3, name: "Verve-1", currency:"NGN", Exipiration: "12 months", Bin:"501166", date: "Nov. 4, 2022", email: "helen@sailboatui.com" },
+    { id: 4, name: "Verve-1", currency:"NGN", Exipiration: "12 months", Bin:"501166", date: "Nov. 4, 2022", email: "helen@sailboatui.com" },
+ 
+  ];
+
+  const filteredProfiles = profiles.filter((profile) =>
+    profile.name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
+  return (
+    <div className="p-6  rounded-md">
+      {/* Search & Add Profile Section */}
+      <div className="flex justify-between items-center mb-4">
+        <div className="relative">
+          <input
+            type="text"
+            placeholder="Search..."
+            className="pl-10 pr-4 py-2 border rounded-md focus:ring focus:ring-blue-200"
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+          />
+          <FiSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500" />
+        </div>
+        <button className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700">
+          Add Profile
+        </button>
+      </div>
+
+      {/* Table */}
+      <div className="overflow-x-auto">
+        <table className="w-full border bg-white border-gray-300 text-left text-sm text-gray-700">
+          <thead className="bg-gray-100 border-b border-gray-300 text-[12px] text-[#475467] font-[500]">
+            <tr>
+              <th className="px-6 py-3 border-r">Card Name</th>
+              <th className="px-6 py-3 border-r">Currency</th>
+              <th className="px-6 py-3 border-r">Exipiration</th>
+              <th className="px-6 py-3 border-r">Bin Prefix</th>
+              <th className="px-6 py-3 border-r">Date Created</th>
+              <th className="px-6 py-3">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            {filteredProfiles.map((profile) => (
+              <tr key={profile.id} className="border-b border-gray-300  text-[12px] text-[#475467] font-[500]">
+                <td className="px-6 py-4 border-r">{profile.name}</td>
+                <td className="px-6 py-4 border-r">{profile.currency}</td>
+                <td className="px-6 py-4 border-r">{profile.Exipiration}</td>
+                <td className="px-6 py-4 border-r">{profile.Bin}</td>
+                <td className="px-6 py-4 border-r">{profile.date}</td>
+                
+                <td className="px-6 py-4 flex gap-4">
+                  <a href="#" className="text-red-500 hover:underline">
+                    Delete
+                  </a>
+                  <a href="#" className="text-blue-500 hover:underline">
+                    Edit
+                  </a>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  );
+};
+
+export default ProfileTable;

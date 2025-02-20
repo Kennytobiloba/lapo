@@ -18,18 +18,15 @@ const Layout = ({ children }) => {
       ${isSidebarOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0"}`}>
         <Sidebar isOpen={isSidebarOpen} setIsOpen={setIsSidebarOpen} />
       </div>
-
       {/* Main Content */}
       <main className="h-full lg:col-span-5 w-full bg-[#F1f7FF]">
         {/* Header */}
         <header className="flex flex-wrap justify-between items-center bg-white border-b-[#D0D5DD] 
-         border-b-[2px] w-full px-4 py-2">
-          
+         border-b-[2px] w-full px-4 py-2">        
           {/* Toggle Button for Sidebar */}
           <button className="lg:hidden text-xl text-[#014DAF]" onClick={() => setIsSidebarOpen(true)}>
             <FiMenu />
           </button>
-
           {/* Dashboard Title */}
           <div className="flex gap-2 px-2 py-2 items-center">
             <span className="text-[16px] text-black">
