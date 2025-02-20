@@ -1,125 +1,87 @@
-import Image from 'next/image'
-import React from 'react'
-import Logo from "../assests/logo.png"
-import { HiOutlineHome } from "react-icons/hi2";
-import { LuBuilding2, LuSettings2 } from "react-icons/lu";
-import { FaCreditCard, FaListUl, FaUser, FaUsers } from "react-icons/fa6";
-import { CiCreditCard1, CiMap } from "react-icons/ci";
-import { MdOutlineCreditScore } from "react-icons/md";
-import { PiProjectorScreenChartLight } from "react-icons/pi";
-import { IoLayers } from "react-icons/io5";
-import { AiOutlineLogout } from "react-icons/ai";
+'use client';
 
+import { motion } from 'framer-motion';
+import Logo from '../assests/logo.png';
+import { FiX } from 'react-icons/fi';
+import { HiOutlineHome } from 'react-icons/hi2';
+import { LuBuilding2, LuSettings2 } from 'react-icons/lu';
+import { FaCreditCard, FaListUl, FaUser, FaUsers } from 'react-icons/fa6';
+import { CiCreditCard1, CiMap } from 'react-icons/ci';
+import { MdOutlineCreditScore } from 'react-icons/md';
+import { PiProjectorScreenChartLight } from 'react-icons/pi';
+import { IoLayers } from 'react-icons/io5';
+import { AiOutlineLogout } from 'react-icons/ai';
+import Image from 'next/image';
 
-const Sidebar = () => {
+const Sidebar = ({ isOpen, setIsOpen }) => {
+  const handleItemClick = () => {
+    setTimeout(() => setIsOpen(false), 200);
+  };
+
   return (
-    <div className='w-full px-[10px]'>
-        <div className='px-2 py-6 relative w-[138px] h-[45px] mt-[27px] '>
-           <Image
-           src={Logo}
-           alt='logo'
-           fill
-           /> 
-        </div>
+    <div className="relative">
+      {/* Sidebar for Small Screens with Motion */}
+      {isOpen && (
+        <motion.div
+          initial={{ x: -250 }}
+          animate={{ x: 0 }}
+          exit={{ x: -250 }}
+          transition={{ duration: 0.3 }}
+          className="fixed top-0 left-0 h-full w-60 bg-white shadow-md p-4 z-50 md:hidden overflow-y-auto"
+        >
+          {/* Close Button */}
+          <button className="absolute top-4 right-4 text-xl text-gray-700" onClick={() => setIsOpen(false)}>
+            <FiX />
+          </button>
 
-        <div className='px-2 mt-4'>
-        <div 
-        className='flex gap-2 rounded-[8px] border-[0.6px]
-         border-[#E2E2E2] bg-[#E2E2E2]  px-2 py-2'>
-          <span className='text-[16px] text-[#014DAF]'><HiOutlineHome /></span>
-         <h4 className='text-[12px] font-[400px] text-[#014DAF] leading-[18px]  font-sans'>Dashboard</h4>
-         </div>
+          <SidebarContent onItemClick={handleItemClick} />
+        </motion.div>
+      )}
 
-         <div className='mt-2'> 
-          <h3 className='text-[9px] font-500 font-sans mt-4  ml-6'>MAIN MENU</h3>
-         </div>
-         <div>
-          
-         </div>
-
-        </div>
-        <div className='px-2 mt-4 space-y-2'>
-        <div className='flex gap-2 hover:rounded-[8px] text-black hover:text-[#014DAF] cursor-pointer hover:border-[0.6px] hover:border-[#E2E2E2]
-         hover:bg-[#E2E2E2]  px-2 py-2'>
-        <span className='text-[16px] text-black '><LuBuilding2 /></span>
-         <h4 className='text-[12px] font-[400px]  leading-[18px]  font-sans'>Branches</h4>
-         </div>
-
-         <div className='flex gap-2 hover:rounded-[8px] text-black hover:text-[#014DAF] cursor-pointer hover:border-[0.6px] hover:border-[#E2E2E2]
-         hover:bg-[#E2E2E2]  px-2 py-2'>
-        <span className='text-[16px] '><FaUser /></span>
-         <h4 className='text-[12px] font-[400px] leading-[18px]  font-sans'>Roles</h4>
-         </div>
-
-         <div className='flex gap-2 hover:rounded-[8px] hover:border-[0.6px] text-black hover:text-[#014DAF] cursor-pointer hover:border-[#E2E2E2]
-         hover:bg-[#E2E2E2]  px-2 py-2'>
-        <span className='text-[16px] '><FaUsers /></span>
-         <h4 className='text-[12px] font-[400px]  leading-[18px]  font-sans'>Users</h4>
-         </div>
-         <div className='flex gap-2 hover:rounded-[8px] text-black hover:text-[#014DAF] cursor-pointer hover:border-[0.6px] hover:border-[#E2E2E2]
-         hover:bg-[#E2E2E2]  px-2 py-2'>
-        <span className='text-[16px] '><LuSettings2 /></span>
-         <h4 className='text-[12px] font-[400px]  leading-[18px]  font-sans'>Card Scheme</h4>
-         </div>
-         <div className='flex gap-2 text-black hover:text-[#014DAF] cursor-pointer hover:rounded-[8px] hover:border-[0.6px] hover:border-[#E2E2E2]
-         hover:bg-[#E2E2E2]  px-2 py-2'>
-        <span className='text-[16px] '><CiCreditCard1 /></span>
-         <h4 className='text-[12px] font-[400px] leading-[18px]  font-sans'>Card Profile</h4>
-         </div>
-
-         <div className='flex gap-2 hover:rounded-[8px] hover:border-[0.6px] text-black hover:text-[#014DAF] cursor-pointer hover:border-[#E2E2E2]
-         hover:bg-[#E2E2E2]  px-2 py-2'>
-        <span className='text-[16px] '><MdOutlineCreditScore /></span>
-         <h4 className='text-[12px] font-[400px]  leading-[18px]  font-sans'>Card Request</h4>
-         </div>
-
-         <div className='flex gap-2 hover:rounded-[8px] text-black hover:text-[#014DAF] cursor-pointer hover:border-[0.6px] hover:border-[#E2E2E2]
-         hover:bg-[#E2E2E2]  px-2 py-2'>
-        <span className='text-[16px] '><PiProjectorScreenChartLight /></span>
-         <h4 className='text-[12px] font-[400px]  leading-[18px]  font-sans'>Stock</h4>
-         </div>
-
-         <div className='flex gap-2 hover:rounded-[8px] text-black hover:text-[#014DAF] cursor-pointer hover:border-[0.6px] hover:border-[#E2E2E2]
-         hover:bg-[#E2E2E2]  px-2 py-2'>
-        <span className='text-[16px] '><FaCreditCard /></span>
-         <h4 className='text-[12px] font-[400px]  leading-[18px]  font-sans'>Card</h4>
-         </div>
-
-         <div className='flex gap-2 hover:rounded-[8px] text-black hover:text-[#014DAF] cursor-pointer hover:border-[0.6px] hover:border-[#E2E2E2]
-         hover:bg-[#E2E2E2]  px-2 py-2'>
-        <span className='text-[16px] '><FaListUl /></span>
-         <h4 className='text-[12px] font-[400px]  leading-[18px]  font-sans'>Authorization List</h4>
-         </div>
-
-         <div className='flex gap-2 hover:rounded-[8px] text-black hover:text-[#014DAF] cursor-pointer hover:border-[0.6px] hover:border-[#E2E2E2]
-         hover:bg-[#E2E2E2]  px-2 py-2'>
-        <span className='text-[16px] '><IoLayers /></span>
-         <h4 className='text-[12px] font-[400px]  leading-[18px]  font-sans'>Authorization Queue</h4>
-         </div>
-
-         <div className='flex gap-2 hover:rounded-[8px] text-black hover:text-[#014DAF] cursor-pointer hover:border-[0.6px] hover:border-[#E2E2E2]
-         hover:bg-[#E2E2E2]  px-2 py-2'>
-        <span className='text-[16px] '><CiMap /></span>
-         <h4 className='text-[12px] font-[400px]  leading-[18px]  font-sans'>Trail</h4>
-         </div>
-
-         <div className='flex gap-2 hover:rounded-[8px] text-black hover:text-[#014DAF] cursor-pointer hover:border-[0.6px] hover:border-[#E2E2E2]
-         hover:bg-[#E2E2E2]  px-2 py-2'>
-        <span className='text-[16px] '><FaUser /></span>
-         <h4 className='text-[12px] font-[400px]  leading-[18px]  font-sans'>Users</h4>
-         </div>
-        </div>
-
-        <div className='mt-24 px-2 '>
-        <div className='flex gap-2 hover:rounded-[8px] text-black hover:text-[#014DAF] cursor-pointer hover:border-[0.6px] hover:border-[#E2E2E2]
-         hover:bg-[#E2E2E2]  px-2 py-2'>
-        <span className='text-[16px] '><AiOutlineLogout /></span>
-         <h4 className='text-[12px] font-[400px]  leading-[18px]  font-sans'>Logout</h4>
-         </div>
-        </div>
-
+      {/* Sidebar for Larger Screens (Always Visible) */}
+      <div className="hidden lg:block fixed top-0 left-0 h-screen w-60 bg-white shadow-md p-4 overflow-y-auto">
+      <div className="relative w-[138px] h-[45px] mx-auto my-4">
+      <Image src={Logo} alt="logo" fill />
+      </div>
+        <SidebarContent onItemClick={() => {}} />
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default Sidebar
+const SidebarContent = ({ onItemClick }) => (
+  <>
+    {/* Menu Items */}
+    <nav className="mt-6 space-y-2">
+      <SidebarItem icon={<HiOutlineHome />} label="Dashboard" onClick={onItemClick} />
+      <SidebarItem icon={<LuBuilding2 />} label="Branches" onClick={onItemClick} />
+      <SidebarItem icon={<FaUser />} label="Roles" onClick={onItemClick} />
+      <SidebarItem icon={<FaUsers />} label="Users" onClick={onItemClick} />
+      <SidebarItem icon={<LuSettings2 />} label="Card Scheme" onClick={onItemClick} />
+      <SidebarItem icon={<CiCreditCard1 />} label="Card Profile" onClick={onItemClick} />
+      <SidebarItem icon={<MdOutlineCreditScore />} label="Card Request" onClick={onItemClick} />
+      <SidebarItem icon={<PiProjectorScreenChartLight />} label="Stock" onClick={onItemClick} />
+      <SidebarItem icon={<FaCreditCard />} label="Card" onClick={onItemClick} />
+      <SidebarItem icon={<FaListUl />} label="Authorization List" onClick={onItemClick} />
+      <SidebarItem icon={<IoLayers />} label="Authorization Queue" onClick={onItemClick} />
+      <SidebarItem icon={<CiMap />} label="Trail" onClick={onItemClick} />
+    </nav>
+
+    {/* Logout Button */}
+    <div className="mt-6">
+      <SidebarItem icon={<AiOutlineLogout />} label="Logout" onClick={onItemClick} />
+    </div>
+  </>
+);
+
+const SidebarItem = ({ icon, label, onClick }) => (
+  <div
+    className="flex items-center gap-2 px-4 py-2 text-black cursor-pointer hover:bg-[#E2E2E2] hover:text-[#014DAF] rounded-md"
+    onClick={onClick}
+  >
+    <span className="text-[16px]">{icon}</span>
+    <h4 className="text-[14px] font-medium font-sans">{label}</h4>
+  </div>
+);
+
+export default Sidebar;

@@ -1,12 +1,22 @@
+
+import Barchart from '@/components/DashbordComponent/Barchart'
+import Table from '@/components/DashbordComponent/Table'
 import React from 'react'
 import { CiCircleCheck, CiCreditCard1, CiMoneyBill } from 'react-icons/ci'
 import { FaCreditCard, FaRegHourglass } from 'react-icons/fa'
 import { MdArrowOutward, MdCreditCard, MdOutlineCreditScore } from 'react-icons/md'
 import { PiGreaterThanLight } from 'react-icons/pi'
+import { FiMaximize2 } from "react-icons/fi";
+import LineCharts from '@/components/LineChart'
+import Piechart from '@/components/DashbordComponent/Piechart'
+
+
 
 const page = () => {
+  // const [isOpen, setIsOpen] = useState(false);
+
   return (
-    <div className="px-6 mt-6">
+    <div className="lg:px-6 mt-6 px-4">
     <div className='flex justify-between'>
       <div>
         <p className='text-[18px] font-[700px] text-[#121212] font-sans leading-[24px]'>Hi Nazeer, what would you like to do today? </p>
@@ -19,7 +29,7 @@ const page = () => {
      {/* secend section */}
      <div className='bg-white rounded-[10px] border-[1px] py-4 px-2 mt-4'>
       <p className='text-[16px] font-[500px] text-[#121212] font-sans  '>Your Quick Access</p>
-      <div className='lg:grid-cols-4 grid-cols-1 gap-4 grid w-full mt-2'>
+      <div className='lg:grid-cols-4 grid-cols-1 md:grid-cols-2 gap-4 grid w-full mt-2'>
         <div className='bg-[#F1F7FF] rounded-[4px] flex gap-4 px-2 py-2 items-center'>
           <span className='h-[28px] w-[28px] rounded-full bg-[#014DAF] text-[14px] text-white flex justify-center items-center ' >
           <CiCreditCard1 />
@@ -169,6 +179,39 @@ const page = () => {
       </div>
 
       {/* third section end */}
+
+      {/* chart section */}
+      <div className='grid lg:grid-cols-2 grid-cols-1 w-full h-full mt-8 gap-4 space-y-4'>
+        <div className='h-[318px] bg-white border border-[#E2E2E2] px-2 py-2 '>
+          <h3 className='text-[18px] font-[500px] ml-4 mt-2  text-[#121212] font-sans'>Monthly Issuance</h3>
+        <Barchart/>
+
+        </div>
+        <div className='h-[318px] bg-white border border-[#E2E2E2] px-2 py-2 '>
+          <div className='flex justify-between'>
+          <h3 className='text-[18px] font-[500px] ml-4 mt-2  text-[#121212] font-sans'>Recent Card Requests</h3>
+          <span className='text-[#D0D5DD] text-[16px] font-bold mr-2 items-center'><FiMaximize2 /></span>
+          </div>
+        <Table/>
+        </div>
+        <div className='h-[318px] bg-white border border-[#E2E2E2] px-2 py-2 '>
+        
+          <LineCharts/>
+
+        </div>
+
+        <div className='h-[318px] bg-white border border-[#E2E2E2] px-2 py-2 '>
+        <h3 className='text-[18px] font-[500px] ml-4 mt-2  text-[#121212] font-sans'> Card Status Distribution</h3>
+      
+        <Piechart/>
+        </div>
+
+
+      
+
+      </div>
+
+
         
     </div>
   )
