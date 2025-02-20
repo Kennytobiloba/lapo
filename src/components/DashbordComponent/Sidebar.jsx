@@ -20,7 +20,7 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
   };
 
   return (
-    <div className="relative">
+    <div className="relative w-full">
       {/* Sidebar for Small Screens with Motion */}
       {isOpen && (
         <motion.div

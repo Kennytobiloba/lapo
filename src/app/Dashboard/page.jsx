@@ -14,7 +14,6 @@ import Piechart from '@/components/DashbordComponent/Piechart'
 
 const page = () => {
   // const [isOpen, setIsOpen] = useState(false);
-
   return (
     <div className="lg:px-6 mt-6 px-4">
     <div className='flex justify-between'>
@@ -75,10 +74,7 @@ const page = () => {
           <h4 className='text-[14px] font-[500px] text-[#121212] font-sans '>Review Card Requests</h4>
           <span className='text-[8px] font-[400]'><PiGreaterThanLight /></span>
           </div>
-          
-
-        </div>
-
+          </div>
       </div>
 
      </div>

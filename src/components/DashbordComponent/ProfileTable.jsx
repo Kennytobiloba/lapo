@@ -1,6 +1,10 @@
 "use client"
 import React, { useState } from "react";
 import { FiSearch } from "react-icons/fi";
+import { CiTrash } from "react-icons/ci";
+import { MdEdit } from "react-icons/md";
+import { FaPlus } from "react-icons/fa";
+
 
 const ProfileTable = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -19,7 +23,8 @@ const ProfileTable = () => {
   return (
     <div className="p-6  rounded-md">
       {/* Search & Add Profile Section */}
-      <div className="flex justify-between items-center mb-4">
+      <div className="flex  flex-wrap lg:flex-nowrap lg:justify-between
+       items-center mb-4 border-[1px] lg:border-t-[#98A2B3] lg:border-b-[#98A2B3] py-2 px-2">
         <div className="relative">
           <input
             type="text"
@@ -30,8 +35,10 @@ const ProfileTable = () => {
           />
           <FiSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500" />
         </div>
-        <button className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700">
-          Add Profile
+        <button className="bg-blue-600 text-white flex 
+         items-center  gap-2 px-4 py-2 rounded-md hover:bg-blue-700">
+        <span className=" text-[12px] "><FaPlus /></span>
+          <h3 className="text-sm"> Add Profile</h3> 
         </button>
       </div>
 
@@ -57,12 +64,12 @@ const ProfileTable = () => {
                 <td className="px-6 py-4 border-r">{profile.Bin}</td>
                 <td className="px-6 py-4 border-r">{profile.date}</td>
                 
-                <td className="px-6 py-4 flex gap-4">
-                  <a href="#" className="text-red-500 hover:underline">
-                    Delete
+                <td className="px-6 py-4 flex gap-4 text-[#475467]">
+                  <a href="#" className=" hover:underline text-[18px]">
+                  <CiTrash />
                   </a>
-                  <a href="#" className="text-blue-500 hover:underline">
-                    Edit
+                  <a href="#" className=" hover:underline text-[18px]">
+                  <MdEdit />
                   </a>
                 </td>
               </tr>
