@@ -13,56 +13,82 @@ import { PiProjectorScreenChartLight } from "react-icons/pi";
 import { IoLayers } from "react-icons/io5";
 import { AiOutlineLogout } from "react-icons/ai";
 import { useToggle } from "@/Provider";
+import Logotwo from "@/components/assests/logotwo.png";
+import { motion } from "framer-motion";
+import { usePathname } from "next/navigation";
 
 const Sidebar = () => {
-  const { isSidebarOpen, setIsSidebarOpen , toggle } = useToggle();
+  const { isSidebarOpen, setIsSidebarOpen, toggle } = useToggle();
+  const pathname = usePathname();
 
   return (
-    <div className="fixed top-0 left-0 h-full  bg-white shadow-md p-4 z-50 overflow-y-auto w-full">
-      {/* Close Button for Mobile */}
+    <div  
+      className="fixed top-0 left-0 h-full bg-white shadow-md p-4 z-50 
+      overflow-y-auto scrollbar-hide w-full flex flex-col justify-between"
+    >
       {isSidebarOpen && (
-        <button
-          className="absolute top-4 right-4 text-xl text-gray-700 lg:hidden"
-          onClick={toggle}
-        >
-          <FiX />
-        </button>
+      <button
+        className="absolute top-4 right-4 text-xl text-gray-700 lg:hidden"
+        onClick={toggle}
+      >
+       <FiX />
+     </button>
       )}
 
-      {/* Logo */}
-      <div className="relative w-[138px] h-[45px] mx-auto my-4">
-          <Image src={Logo} alt="logo" fill />
-        </div>
+      <div className="mx-auto my-4">
+        <Image src={Logo} alt="logo" width={200} height={45} />
+      </div>
 
-      {/* Navigation Links */}
-      <nav className="mt-6 space-y-2">
-        {menuItems.map(({ icon, label, href }, index) => (
-          <Link href={href} key={index} className="block" onClick={() => setIsSidebarOpen(false)}>
-            <div className="flex items-center gap-2 px-4 py-2 text-black cursor-pointer hover:bg-[#E2E2E2] hover:text-[#014DAF] rounded-md">
-              <span className="text-[16px]">{icon}</span>
-              <h4 className="text-[14px] font-medium font-sans">{label}</h4>
-            </div>
-          </Link>
-        ))}
+      <nav className="mt-6 space-y-2 flex-1 mb-8">
+        {menuItems.map(({ icon, label, href }, index) => {
+          const isActive = pathname === href;
+          return (
+         <Link href={href} key={index} className="block" onClick={toggle}>
+          <motion.div 
+            whileHover={{ scale: 1.05 }}
+            className={`flex items-center gap-2 px-4 py-2 text-black
+             cursor-pointer rounded-md transition-all ${isActive ?
+             "bg-[#E2E2E2] text-[#014DAF]" : "hover:bg-[#E2E2E2] hover:text-[#014DAF]"}`}
+          >
+          <span className="text-[16px]">{icon}</span>
+          <h4 className="text-[14px] font-medium font-sans">{label}</h4>
+          </motion.div>
+        </Link>
+          );
+        })}
       </nav>
+      <div className="mt-auto p-4">
+       <Link href="/logout">
+        <motion.div 
+          whileHover={{ scale: 1.05 }}
+          className="flex items-center gap-2 px-4 py-2 text-black cursor-pointer rounded-md hover:bg-[#E2E2E2] hover:text-[#014DAF]"
+        >
+          <AiOutlineLogout className="text-[16px]" />
+          <h4 className="text-[14px] font-medium font-sans">Logout</h4>
+        </motion.div>
+        </Link>
+        <div className="mt-4">
+          <h3 className="text-[8px] text-[#808080] font-medium font-sans b-2">POWERED BY</h3>
+          <Image src={Logotwo} width={93.33} height={41.42} alt="logo" />
+        </div>
+      </div>
     </div>
   );
 };
 
 const menuItems = [
   { icon: <HiOutlineHome />, label: "Dashboard", href: "/Dashboard" },
-  { icon: <LuBuilding2 />, label: "Branches", href: "/Dashboard" },
-  { icon: <FaUser />, label: "Roles", href: "/Dashboard" },
-  { icon: <FaUsers />, label: "Users", href: "/Dashboard" },
-  { icon: <LuSettings2 />, label: "Card Scheme", href: "/Dashboard" },
+  { icon: <LuBuilding2 />, label: "Branches", href: "/" },
+  { icon: <FaUser />, label: "Roles", href: "/" },
+  { icon: <FaUsers />, label: "Users", href: "/" },
+  { icon: <LuSettings2 />, label: "Card Scheme", href: "/" },
   { icon: <CiCreditCard1 />, label: "Card Profile", href: "/Dashboard/profile" },
   { icon: <MdOutlineCreditScore />, label: "Card Request", href: "/Dashboard/Card" },
-  { icon: <PiProjectorScreenChartLight />, label: "Stock", href: "/Dashboard" },
-  { icon: <FaCreditCard />, label: "Card", href: "/Dashboard" },
-  { icon: <FaListUl />, label: "Authorization List", href: "/Dashboard" },
-  { icon: <IoLayers />, label: "Authorization Queue", href: "/Dashboard" },
-  { icon: <CiMap />, label: "Trail", href: "/Dashboard" },
-  { icon: <AiOutlineLogout />, label: "Logout", href: "/Dashboard" },
+  { icon: <PiProjectorScreenChartLight />, label: "Stock", href: "/" },
+  { icon: <FaCreditCard />, label: "Card", href: "/" },
+  { icon: <FaListUl />, label: "Authorization List", href: "/" },
+  { icon: <IoLayers />, label: "Authorization Queue", href: "/" },
+  { icon: <CiMap />, label: "Trail", href: "/" },
 ];
 
 export default Sidebar;

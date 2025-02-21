@@ -16,7 +16,7 @@ const ToggleProvider = ({ children }) => {
   };
 
   return (
-    <ToggleContext.Provider value={{ isSidebarOpen, toggle }}> 
+    <ToggleContext.Provider value={{ isSidebarOpen, toggle }}>
       {children}
     </ToggleContext.Provider>
   );

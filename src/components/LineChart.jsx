@@ -20,8 +20,8 @@ const scaleData = data.map(item => ({
 
 const LineCharts = () => {
   return (
-    <div className='w-full h-full'>
-      <div style={{ width: '100%' }}>
+      <div className='w-full h-full'>
+        <div style={{ width: '100%' }}>
         <ResponsiveContainer width="100%" height={300}>
           <AreaChart
             data={scaleData}
