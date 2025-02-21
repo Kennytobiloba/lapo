@@ -14,6 +14,9 @@ export default {
       fontFamily: {
         sans: ['Satoshi', 'sans-serif'],
       },
+      screens:{
+        'custom-range': { min: '1024px', max: '1028px' },
+      }
     },
   },
   plugins: [require('tailwind-scrollbar-hide')],

@@ -58,7 +58,7 @@ const page = () => {
           <p className="text-[16px] font-[500px] text-[#121212] font-sans  ">
             Your Quick Access
           </p>
-          <div className="lg:grid-cols-4 grid-cols-1 md:grid-cols-2 gap-4 grid w-full mt-2">
+          <div className="lg:grid-cols-4 custom-range:grid-cols-2 grid-cols-1 md:grid-cols-2 gap-4 grid w-full mt-2">
           <div className="bg-[#F1F7FF] rounded-[4px] flex gap-4 px-2 py-2 items-center">
           <span className="h-[28px] w-[28px] rounded-full bg-[#014DAF] text-[14px]
           text-white flex justify-center items-center ">
@@ -124,7 +124,7 @@ const page = () => {
         {/* secend section end*/}
 
         {/* third section */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 grid-cols-1 mt-4 gap-4">
+        <div className="grid md:grid-cols-2 custom-range:grid-cols-2 lg:grid-cols-4 grid-cols-1 mt-4 gap-4">
           {/* grid one */}
         <div className="bg-white rounded-[10px] border border-[#E2E2E2] py-2 px-2">
           <div className="flex flex-col ">
