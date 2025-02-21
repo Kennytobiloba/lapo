@@ -1,4 +1,4 @@
-
+"use client"
 import Barchart from '@/components/DashbordComponent/Barchart'
 import Table from '@/components/DashbordComponent/Table'
 import React from 'react'
@@ -9,13 +9,21 @@ import { PiGreaterThanLight } from 'react-icons/pi'
 import { FiMaximize2 } from "react-icons/fi";
 import LineCharts from '@/components/LineChart'
 import Piechart from '@/components/DashbordComponent/Piechart'
+import DashboardHeader from '@/components/DashbordComponent/DashboardHeader'
+import { motion } from "framer-motion";
 
 
 
 const page = () => {
-  // const [isOpen, setIsOpen] = useState(false);
+
   return (
-    <div className="lg:px-6 mt-6 px-4">
+    <>
+    <DashboardHeader name={"Dashboard"} />
+    <motion.div
+    initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
+    transition={{ duration: 0.6 , ease: "easeInOut"  }} 
+    className="lg:px-6 mt-6 px-4">
     <div className='flex justify-between'>
       <div>
         <p className='text-[18px] font-[700px] text-[#121212] font-sans leading-[24px]'>Hi Nazeer, what would you like to do today? </p>
@@ -181,7 +189,6 @@ const page = () => {
         <div className='h-[318px] bg-white border border-[#E2E2E2] px-2 py-2 '>
           <h3 className='text-[18px] font-[500px] ml-4 mt-2  text-[#121212] font-sans'>Monthly Issuance</h3>
         <Barchart/>
-
         </div>
         <div className='h-[318px] bg-white border border-[#E2E2E2] px-2 py-2 '>
           <div className='flex justify-between'>
@@ -190,26 +197,17 @@ const page = () => {
           </div>
         <Table/>
         </div>
-        <div className='h-[318px] bg-white border border-[#E2E2E2] px-2 py-2 '>
-        
+        <div className='h-[318px] bg-white border border-[#E2E2E2] px-2 py-2 '>  
           <LineCharts/>
-
         </div>
-
         <div className='h-[318px] bg-white border border-[#E2E2E2] px-2 py-2 '>
         <h3 className='text-[18px] font-[500px] ml-4 mt-2  text-[#121212] font-sans'> Card Status Distribution</h3>
       
         <Piechart/>
         </div>
-
-
-      
-
-      </div>
-
-
-        
-    </div>
+      </div>      
+    </motion.div>
+    </>
   )
 }
 

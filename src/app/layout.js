@@ -1,6 +1,7 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Head from "next/head";
+import Toggleprovider from "@/Provider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -29,7 +30,9 @@ export default function RootLayout({ children }) {
             href="https://fonts.googleapis.com/css2?family=Satoshi:wght@400;500;700&display=swap"
           />
         </Head>
+        <Toggleprovider>
         {children}
+        </Toggleprovider>
       </body>
     </html>
   );

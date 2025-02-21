@@ -21,15 +21,15 @@ const ProfileTable = () => {
   );
 
   return (
-    <div className="p-6  rounded-md">
+    <div className="  rounded-md mt-4">
       {/* Search & Add Profile Section */}
       <div className="flex  flex-wrap lg:flex-nowrap lg:justify-between
-       items-center mb-4 border-[1px] lg:border-t-[#98A2B3] lg:border-b-[#98A2B3] py-2 px-2">
+       items-center mb-4 lg:border-[1px] lg:border-t-[#98A2B3] lg:border-b-[#98A2B3] py-2 lg:px-2 lg:space-y-0 space-y-4 ">
         <div className="relative">
           <input
             type="text"
             placeholder="Search..."
-            className="pl-10 pr-4 py-2 border rounded-md focus:ring focus:ring-blue-200"
+            className="pl-10 pr-4 py-2 border-[#D0D5DD]  rounded-md focus:ring focus:ring-[#D0D5DD]"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
           />
